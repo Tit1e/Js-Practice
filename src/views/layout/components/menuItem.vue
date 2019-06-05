@@ -5,7 +5,9 @@
         <template slot="title">
           <span>{{Menu.name}}</span>
         </template>
-        <el-menu-item :index="menu.path" v-for="(menu,index) in Menu.children" :key="index">{{menu.name}}</el-menu-item>
+        <el-menu-item :index="menu.path"
+          v-for="(menu,index) in Menu.children"
+          :key="index">{{menu.name}}</el-menu-item>
       </el-submenu>
     </template>
     <template v-else>
@@ -24,17 +26,17 @@ export default {
     }
   },
   computed: {
-    Menu(){
-      if(this.menuItem.children){
-        if(this.menuItem.children.length > 1){
+    Menu() {
+      if (this.menuItem.children) {
+        if (this.menuItem.children.length > 1) {
           return this.menuItem
-        }else{
+        } else {
           return {
             ...this.menuItem.children[0],
             meta: this.menuItem.meta
           }
         }
-      }else{
+      } else {
         return this.menuItem
       }
     }

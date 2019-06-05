@@ -1,7 +1,10 @@
 <template>
   <el-aside width="200px">
-    <el-menu :default-active="$route.path" unique-opened router>
-      <menu-item v-for="(menu,index) in menuList" :menu-item="menu" />
+    <el-menu :default-active="$route.path"
+      unique-opened
+      router>
+      <menu-item v-for="(menu,index) in menuList"
+        :menu-item="menu" />
     </el-menu>
   </el-aside>
 </template>
