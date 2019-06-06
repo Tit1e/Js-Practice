@@ -18,7 +18,7 @@ const array = [
         meta: {}
       },
       {
-        name: '解构赋值',
+        name: '数组解构赋值',
         path: '/array/array-destructuring',
         component: () => import('@/views/array/destructuring'),
         meta: {}
@@ -52,13 +52,13 @@ const array = [
 ]
 const object = [
   {
-    name: '数组相关',
+    name: '对象相关',
     path: '/object',
     redirect: '/object/object-destructuring',
     component: layout,
     children: [
       {
-        name: '解构赋值',
+        name: '对象解构赋值',
         path: '/object/object-destructuring',
         component: () => import('@/views/object/destructuring'),
         meta: {}
