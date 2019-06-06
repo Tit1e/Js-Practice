@@ -33,7 +33,18 @@ const lists = [
   { name: 'Eric', sex: '1', city: '北京' born: '2000-01-01'},
 ]`,
       code:
-``
+`const result = lists.map((item)=> {
+    item.sex = item.sex == null? '未知': item.sex == 0? '女' : '男'
+    item._sex =  item.sex
+    item.age = item.born ?new Date().getFullYear() - new Date(item.born).getFullYear() : '未知'
+    return item
+})
+
+lists.forEach(ele => {
+    ele.sex = ele.sex == null? '未知': ele.sex == 0? '女' : '男'
+    ele._sex =  ele.sex
+    ele.age = ele.born ?new Date().getFullYear() - new Date(ele.born).getFullYear() : '未知'
+});`
     }
   },
 }

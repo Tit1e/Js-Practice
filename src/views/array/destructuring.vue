@@ -8,6 +8,11 @@
   <card title="回答内容">
     <codemirror v-model="code" />
   </card>
+
+  <card title="整理复习">
+    <p>● es6 数组解构赋值 和 变量声明</p>
+    <codemirror v-model="review" />
+  </card>
 </div>
 </template>
 
@@ -24,6 +29,9 @@ let c = 3
 // 将下面数组拆分成两个组：a = [1]，b = [2, 3, 4]
 const array = [1, 2, 3, 4]`,
       code:
+`let [a, b, c] = [1, 2, 3]
+let [a, ...b] = [1,2,3,4]`,
+      review:
 ``
     }
   },
