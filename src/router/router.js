@@ -103,8 +103,8 @@ const string = [
 const date = [
   {
     name: '日期相关',
-    path: '/string',
-    redirect: '/string/indexof',
+    path: '/date',
+    redirect: '/date/date',
     component: layout,
     children: [
       {
@@ -150,6 +150,7 @@ const element = [
 ]
 const routes = [
   {
+    name: '说明',
     path: '/',
     redirect: '/description',
     component: layout,
