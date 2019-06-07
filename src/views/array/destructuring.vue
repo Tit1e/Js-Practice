@@ -11,7 +11,7 @@
 
   <card title="整理复习">
     <p>● es6 数组解构赋值 和 变量声明</p>
-    <codemirror v-model="review" />
+    <mavon-editor v-model="review" />
   </card>
 </div>
 </template>

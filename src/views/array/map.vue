@@ -27,10 +27,10 @@ export default {
 `// sex: 0 女生，1 男生
 const lists = [
   { name: 'John', sex: '0', city: '上海', born: '1994-01-01'},
-  { name: 'Amy', sex: '1', city: '杭州' born: null},
-  { name: 'Jack', sex: '0', city: '北京' born: '2009-09-01'},
-  { name: 'Penny', sex: null, city: '福州' born: ''},
-  { name: 'Eric', sex: '1', city: '北京' born: '2000-01-01'},
+  { name: 'Amy', sex: '1', city: '杭州', born: null},
+  { name: 'Jack', sex: '0', city: '北京', born: '2009-09-01'},
+  { name: 'Penny', sex: null, city: '福州', born: ''},
+  { name: 'Eric', sex: '1', city: '北京', born: '2000-01-01'},
 ]`,
       code:
 `const result = lists.map((item)=> {
@@ -44,7 +44,11 @@ lists.forEach(ele => {
     ele.sex = ele.sex == null? '未知': ele.sex == 0? '女' : '男'
     ele._sex =  ele.sex
     ele.age = ele.born ?new Date().getFullYear() - new Date(ele.born).getFullYear() : '未知'
-});`
+});
+
+// !要求中只说了【_sex】赋值为中文，并未说将【sex】的值也覆盖
+// !无法正确显示的字段一律赋值为【未知】，为什么 【born】 字段未做处理
+`
     }
   },
 }
