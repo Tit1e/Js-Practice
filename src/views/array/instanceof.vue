@@ -11,10 +11,15 @@
     <div>
       <h3>js数据类型和判断数据类型方法</h3>
       <p>最新的 ECMAScript 标准定义了7种数据类型</p>
-      <p>● 六种基本数据类型</p>
-      <p>● 对象</p>
+      <p class="text-danger">身为前端能不能专业点 🙄️，【●】就用 &lt;li&gt; 嘛</p>
+      <ul>
+        <li>六种基本数据类型</li>
+        <li>对象</li>
+      </ul>
+      <!-- <p>● 六种基本数据类型</p>
+      <p>● 对象</p> -->
     </div>
-    <codemirror v-model="review" />
+    <mavon-editor v-model="review" />
   </card>
 </div>
 </template>
@@ -27,15 +32,21 @@ export default {
 `// 判断 array 是否为数组
 const array = [1, 2, 3]`,
       code:
-`
-- 用Array.isArray()方法判断
-  console.log(Array.isArray(array))                  //true
-- 用typeof()判断
-  console.log(typeof array)                          //object 不可行 typeof判断null和复杂数据类型都是obj
-- 用Object.prototype.toString.call()判断 代码太长
-  console.log(Object.prototype.toString.call(array)) //array
-- 使用constructor方法
-  console.log(array.constructor == Array)            //true`,
+`// !这是代码编辑器，就别用 markdown 语法了
+
+// 用Array.isArray()方法判断
+console.log(Array.isArray(array))                  //true
+
+// 用typeof()判断
+console.log(typeof array)                          //object 不可行 typeof判断null和复杂数据类型都是obj
+
+// 用Object.prototype.toString.call()判断 代码太长
+console.log(Object.prototype.toString.call(array)) //array
+
+// 使用constructor方法
+console.log(array.constructor == Array)            //true
+
+// 下面整理中写了 instanceof 这里为啥不举例？🙄️`,
      review:
 `- js里判断数据类型的方法
     + 最常见的typeof [判断简单数据类型可以，返回一个字符串]
