@@ -29,74 +29,35 @@ export default {
     return {
       msg: '',
       code:
-`- 获取【本月今天】的日期
-    var date = new Date()           // 获取时间对象
-    var year = date.getFullYear();  // 获取年
-    var month = date.getMonth() + 1;// 获取月(0-11)
-    var day = date.getDate();       // 获取日
-    var h = date.getHours();        // 获取时
-    var m = date.getMinutes();      // 获取分
-    var s = date.getSeconds();      // 获取秒
-    if(day < 10 && day > 0) {
-      month = '0' + month;
-    }
-    if(day < 10) {
-      day = '0' + day
-    }
-    if(h < 10) {
-      h = '0' + h
-    }
-    if(m < 10) {
-      m =  '0' + m
-    }
-    if(s < 10) {
-      s = '0' + s
-    }
-    var nowDate = year + "-" + month + "-" + day + " " + h + ":" + m + ":" + s
-- 获取【上月今天】的日期
-    var date = new Date()           // 获取时间对象
-    var year = date.getFullYear();  // 获取年
-    var month = date.getMonth();    // 获取月(0-11)
-    var day = date.getDate();       // 获取日
-
-    if(day < 10) {
-      month = '0' + month;
-    }
-    if(day < 10) {
-      day = '0' + day
-    }
-    var nowDate = year + "-" + month + "-" + day
-- 获取【本月第一天】日期
-    var date = new Date();
-    date.setDate(1);                //根据本地时间为指定的日期对象设置月份中的第几天
-    console.log(date.setDate(1))
-    var month = date.getMonth()+1;
-    var day = date.getDate();
-    if (month < 10) {
-        month = '0' + month
-    }
-    if (day < 10) {
-        day = '0' + day
-    }
-    console.log(date.getFullYear() + '-' + month + '-' + day)
-- 获取【上月第一天】日期
-    var date = new Date();
-    date.setDate(1); //1559373960798
-    console.log(date.setDate(1))
-    var month = date.getMonth();
-    var day = date.getDate();
-    if (month < 10) {
-        month = '0' + month
-    }
-    if (day < 10) {
-        day = '0' + day
-    }
-    console.log(date.getFullYear() + '-' + month + '-' + day)
-- 获取【本月最后一天】日期
-- 获取【上月最后一天】日期
-- 获取【7天前】的日期
-- 获取【7天后】的日期
-- 获取距离现在 2456 秒后的时间（精确到时分秒）
+`- 原生方法
+  let t = new Date()       //时间对象
+  let y = t.getFullYear()  //获取年
+  let m = t.getMonth() + 1 //获取当月[0-11]
+  let lm = t.getMonth()    //获取上月
+  let d = t.getDate()      //获取日
+  let h = t.getHours()     //获取时
+  let min = t.getMinutes() //获取分
+  let s = t.getSeconds()   //获取秒
+  let spe = '-'
+  let sym = ':'
+  if(m < 10 || lm< 10) {
+      m = '0' + m
+      lm = '0' + lm
+  }
+  if(d < 10) {
+      d = '0' + d
+  }
+  // 获取【本月今天】的日期
+  let today = y +  spe + m + spe + d + ' ' + h + sym + min + sym + s
+  // 获取【上月今天】的日期
+  let lastMonth = y +  spe + lm + spe + d + ' ' + h + sym + min + sym + s
+  // 获取【本月第一天】日期
+  
+  // 获取【本月最后一天】日期
+  // 获取【上月最后一天】日期
+  // 获取【7天前】的日期
+  // 获取【7天后】的日期
+  // 获取距离现在 2456 秒后的时间（精确到时分秒）
 
 - dayjs方法
   // 获取【本月今天】的日期
@@ -115,7 +76,9 @@ export default {
   console.log(dayjs().add(7,'day').format('YYYY-MM-DD'))                             //2019-06-13
   // 获取【7天后】的日期
   console.log(dayjs().subtract(7,'day').format('YYYY-MM-DD'))                        //2019-05-30
-  // 获取距离现在 2456 秒后的时间（精确到时分秒）`
+  // 获取距离现在 2456 秒后的时间（精确到时分秒）
+  const s = dayjs().valueOf() + 2456 * 1000
+  console.log(dayjs(s).format('YYYY-MM-DD HH:mm:ss'))`
     }
   },
 }
