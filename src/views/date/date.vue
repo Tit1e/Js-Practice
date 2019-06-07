@@ -90,13 +90,13 @@ function formDate(t) {
   sevenAgo.setDate(sevenAgo.getDate() - 7)
   console.log(formDate(sevenAgo))
   // 时间戳
-  console.log(formDate(new Date(new Date().getTime() - 7 * 24 *60 *60*1000)))
+  console.log(formDate(new Date(new Date().getTime() - 7 * 24 * 60 * 60 * 1000)))
   // 获取【7天后】的日期
   const sevenLater = new Date()
   sevenLater.setDate(sevenLater.getDate() + 7)
   console.log(formDate(sevenLater))
   // 时间戳
-  console.log(formDate(new Date(new Date().getTime() + 7 * 24 *60 *60*1000)))
+  console.log(formDate(new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000)))
   // 获取距离现在 2456 秒后的时间（精确到时分秒）
   const time =  new Date().getTime()
   console.log(formDate(new Date(time+2456*1000)))
