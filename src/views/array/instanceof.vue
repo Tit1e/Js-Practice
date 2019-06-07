@@ -18,7 +18,7 @@ export default {
 `// 判断 array 是否为数组
 const array = [1, 2, 3]`,
       code:
-``
+``,
     }
   },
 }

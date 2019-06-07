@@ -12,7 +12,13 @@ import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/monokai.css'
 import 'codemirror/mode/javascript/javascript.js'
 
+// mavon-editor
+import 'mavon-editor/dist/css/index.css'
+import mavonEditor from 'mavon-editor'
+
 import card from '@/components/card'
+
+Vue.use(mavonEditor)
 
 Vue.use(VueCodemirror, {
   options: {
