@@ -11,13 +11,11 @@
     <div>
       <h3>js数据类型和判断数据类型方法</h3>
       <p>最新的 ECMAScript 标准定义了7种数据类型</p>
-      <p class="text-danger">身为前端能不能专业点 🙄️，【●】就用 &lt;li&gt; 嘛</p>
+      <p class="text-danger">身为前端能不能专业点 🙄️，【●】就用 &lt;li&gt; 嘛，记得把项目中所有地方都改回来</p>
       <ul>
         <li>六种基本数据类型</li>
         <li>对象</li>
       </ul>
-      <!-- <p>● 六种基本数据类型</p>
-      <p>● 对象</p> -->
     </div>
     <mavon-editor v-model="review" />
   </card>
