@@ -135,10 +135,10 @@ console.log(dayjs().subtract(1, 'months').endOf('months').format('YYYY-MM-DD')) 
 // !7 下面两个前后是不是搞混了？
 
 // 获取【7天前】的日期
-console.log(dayjs().add(7,'day').format('YYYY-MM-DD'))                             //2019-06-13
+console.log(dayjs().subtract(7,'day').format('YYYY-MM-DD'))                        //2019-05-30
 
 // 获取【7天后】的日期
-console.log(dayjs().subtract(7,'day').format('YYYY-MM-DD'))                        //2019-05-30
+console.log(dayjs().add(7,'day').format('YYYY-MM-DD'))                             //2019-06-13
 
 // 获取距离现在 2456 秒后的时间（精确到时分秒）
 const s = dayjs().valueOf() + 2456 * 1000

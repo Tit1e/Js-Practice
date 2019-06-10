@@ -40,12 +40,6 @@ const lists = [
     return item
 })
 
-lists.forEach(ele => {
-    ele.sex = ele.sex == null? '未知': ele.sex == 0? '女' : '男'
-    ele._sex =  ele.sex
-    ele.age = ele.born ?new Date().getFullYear() - new Date(ele.born).getFullYear() : '未知'
-});
-
 // !要求中只说了【_sex】赋值为中文，并未说将【sex】的值也覆盖
 // !无法正确显示的字段一律赋值为【未知】，为什么 【born】 字段未做处理
 `

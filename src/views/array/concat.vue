@@ -19,7 +19,8 @@ export default {
   data() {
     return {
       source:
-``,
+`concat 合并两个数组 返回一个新数组
+数组1.concat(数组2)`,
       code:
 ``
     }

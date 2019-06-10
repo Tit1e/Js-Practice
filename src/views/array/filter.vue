@@ -34,7 +34,7 @@ const result = lists.filter((ele) => {
   const date = new Date(ele.born).getTime();
   const star = new Date('1995').getTime()
   const end = new Date('2010').getTime()
-  return (date > star && date < end && ele.sex == '0')
+  return (date >= star && date <= end && ele.sex == '0')
 })
 console.log(result)`
     }

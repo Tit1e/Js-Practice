@@ -10,7 +10,7 @@
   </card>
 
   <card title="整理复习">
-    <p>● es6 数组解构赋值 和 变量声明</p>
+    <li> es6 数组解构赋值 和 变量声明</li>
     <mavon-editor v-model="review" />
   </card>
 </div>

@@ -44,6 +44,9 @@ console.log(Object.prototype.toString.call(array)) //array
 // 使用constructor方法
 console.log(array.constructor == Array)            //true
 
+// 使用instanceof方法[A是不是B造出来的]
+console.log(array instanceof Array)                //true
+
 // 下面整理中写了 instanceof 这里为啥不举例？🙄️`,
      review:
 `- js里判断数据类型的方法
