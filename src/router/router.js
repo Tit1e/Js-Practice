@@ -69,6 +69,24 @@ const object = [
         component: () => import('@/views/object/for'),
         meta: {}
       },
+      {
+        name: '获取键名',
+        path: '/object/keys',
+        component: () => import('@/views/object/keys'),
+        meta: {}
+      },
+      {
+        name: '浅拷贝',
+        path: '/object/assign',
+        component: () => import('@/views/object/assign'),
+        meta: {}
+      },
+      {
+        name: '对象赋值',
+        path: '/object/set-object',
+        component: () => import('@/views/object/set-object'),
+        meta: {}
+      },
     ]
   }
 ]
@@ -95,6 +113,12 @@ const string = [
         name: '模板字符串',
         path: '/string/template-literals',
         component: () => import('@/views/string/templateLiterals'),
+        meta: {}
+      },
+      {
+        name: '字符串截取',
+        path: '/string/substring',
+        component: () => import('@/views/string/substring'),
         meta: {}
       },
     ]

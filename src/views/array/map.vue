@@ -2,7 +2,7 @@
 <div>
   <card>
     <h3>
-      <el-link type="primary" target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map">map</el-link> 方法的使用
+      <el-link type="primary" target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map">Array.map()</el-link> 方法的使用
     </h3>
     <p>处理完成后的 lists 要求达到以下效果：</p>
     <ul>

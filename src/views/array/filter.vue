@@ -2,7 +2,7 @@
 <div>
   <card>
     <p>
-      <el-link type="primary" target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/filter">filter</el-link> 方法的使用
+      <el-link type="primary" target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/filter">Array.filter()</el-link> 方法的使用
     </p>
     <p>过滤出【1995-2010】（包含 1995 与 2010）期间出生的【女生】</p>
     <codemirror v-model="source" />
