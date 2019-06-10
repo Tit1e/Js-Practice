@@ -4,7 +4,7 @@
     <p>
       <el-link type="primary" target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/concat">concat</el-link> 方法的使用
     </p>
-    <!-- <p>过滤出【1995-2010】（包含 1995 与 2010）期间出生的【女生】</p> -->
+    <p>合并 a 与 b 数组（多种方法）</p>
     <codemirror v-model="source" />
   </card>
 
@@ -19,8 +19,9 @@ export default {
   data() {
     return {
       source:
-`concat 合并两个数组 返回一个新数组
-数组1.concat(数组2)`,
+`let a = [1, 2, 3, 4]
+let b = [5, 6, 7, 8]
+`,
       code:
 ``
     }
