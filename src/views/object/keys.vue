@@ -21,7 +21,18 @@ export default {
       source:
 `let obj = { name: 'John', age: 5, city: 'China'}`,
       code:
-``
+`// 1. Object.keys() 返回一个所有元素为字符串的数组
+console.log(Object.keys(obj)) // ["name", "age", "city"]
+// 2. 循环
+const arr = []
+for(var key in obj) {
+  // console.log(key)       // 键
+  // console.log(obj[key])  // 值
+  arr.push(key)
+}
+console.log(arr)  // ["name", "age", "city"]
+
+`
     }
   },
 }

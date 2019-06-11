@@ -18,7 +18,9 @@ export default {
       source:
 `let string = 'www.google.com'`,
       code:
-``
+`const str = string.split('.')
+console.log(str)  //["www", "google", "com"]
+`
     }
   },
 }

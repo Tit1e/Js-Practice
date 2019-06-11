@@ -20,7 +20,8 @@ export default {
 let b = 'google'
 let c = 'com'`,
       code:
-``
+`
+`
     }
   },
 }

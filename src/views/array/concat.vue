@@ -23,7 +23,21 @@ export default {
 let b = [5, 6, 7, 8]
 `,
       code:
-``
+`// 方法1 concat
+let c = a.concat(b)
+console.log(c)  //[1, 2, 3, 4, 5, 6, 7, 8]
+
+// 方法2 循环
+for(var i in b){
+  a.push(b[i]);
+}
+console.log(a)   //[1, 2, 3, 4, 5, 6, 7, 8]
+
+// 方法3 array.push.apply()
+a.push.apply(a, b);
+console.log(a) // [1, 2, 3, 4, 5, 6, 7, 8]
+console.log(b) // [5, 6, 7, 8]
+`
     }
   },
 }

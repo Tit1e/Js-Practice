@@ -23,7 +23,11 @@ export default {
 let b = [2, 34, 42, 43, 54, 456, 1]
 `,
       code:
-``
+`for ( let i = 0 ; i < a.length; i ++ ) {
+  if(b.includes(a[i])) {
+    console.log(a[i])     // 1 34 456
+  }
+}`
     }
   },
 }

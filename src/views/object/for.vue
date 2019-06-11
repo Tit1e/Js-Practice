@@ -18,7 +18,11 @@ export default {
       source:
 `let obj = { name: 'John', age: 5, city: 'China'}`,
       code:
-``
+`let obj = { name: 'John', age: 5, city: 'China'}
+for(var key in obj) {
+  console.log(key)        // name age city
+  console.log(obj[key])   // John 5 China
+}`
     }
   },
 }

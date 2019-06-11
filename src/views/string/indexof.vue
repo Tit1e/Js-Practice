@@ -19,7 +19,16 @@ export default {
 `let string = 'www.google.com'
 let str = 'g'`,
       code:
-``
+`for(var i = 0; i < string.length; i++){
+  if(string[i] !== -1) {
+    var one = string.indexOf(str)
+    var two = string.indexOf(str, one+1);
+  }
+}
+console.log(one)  // 4
+console.log(two)  // 7
+
+`
     }
   },
 }

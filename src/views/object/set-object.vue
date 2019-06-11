@@ -22,7 +22,10 @@ let b = { name: '', city: '', born: '' }
 let c = { name: 'John', city: 'China', born: '1994-01-01' }
 `,
       code:
-``
+`for(var key in a) {
+  b[key] == ''? b[key] = a[key] : ''
+}
+console.log(b) //{name: "John", city: "China", born: "1994-01-01"}`
     }
   },
 }

@@ -22,7 +22,7 @@ let name = obj.name
 let _age = obj.age
 `,
       code:
-``
+`let {name, age:_age} = { name: 'John', age: 5 }`
     }
   },
 }

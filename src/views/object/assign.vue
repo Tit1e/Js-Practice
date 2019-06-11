@@ -21,7 +21,20 @@ export default {
       source:
 `let obj = { name: 'John', age: 5, city: 'China'}`,
       code:
-``
+`// 方法1
+const obj1 = Object.assign(obj)
+console.log(obj1)  //{name: "John", age: 5, city: "China"}
+
+// 方法2
+let obj1 = {}
+for(var key in obj) {
+    obj1[key] = obj[key]
+}
+console.log(obj1)  //{name: "John", age: 5, city: "China"}
+
+//方法3
+let copyObj = {...obj}
+console.log(copyObj) //{name: "John", age: 5, city: "China"}`
     }
   },
 }
