@@ -24,7 +24,7 @@ export default {
   for( var i = 0; i < ele.length/2; i ++){
     var str = ''
     str = ele.substr(0, 2*(i+1))
-    
+
     if(str.length == 2) {
         str = str + '0000'
     }

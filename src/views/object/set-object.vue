@@ -25,7 +25,12 @@ let c = { name: 'John', city: 'China', born: '1994-01-01' }
 `for(var key in a) {
   b[key] == ''? b[key] = a[key] : ''
 }
-console.log(b) //{name: "John", city: "China", born: "1994-01-01"}`
+console.log(b) //{name: "John", city: "China", born: "1994-01-01"}
+
+// 直接循环 b
+for(let key in b) {
+  b[key] = a[key]
+}`
     }
   },
 }

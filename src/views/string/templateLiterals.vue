@@ -20,8 +20,7 @@ export default {
 let b = 'google'
 let c = 'com'`,
       code:
-`
-`
+`let d = \`\${a}.\${b}.\${c}\``
     }
   },
 }
