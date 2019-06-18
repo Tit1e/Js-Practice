@@ -18,6 +18,8 @@ import mavonEditor from 'mavon-editor'
 
 import card from '@/components/card'
 
+require('./mock')
+
 Vue.use(mavonEditor)
 
 Vue.use(VueCodemirror, {
