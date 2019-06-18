@@ -160,13 +160,13 @@ const element = [
   {
     name: 'Element 相关',
     path: '/element',
-    redirect: '/element/element',
+    redirect: '/element/table',
     component: layout,
     children: [
       {
-        name: 'Element',
-        path: '/element/element',
-        component: () => import('@/views/element/element'),
+        name: 'Table',
+        path: '/element/table',
+        component: () => import('@/views/element/table'),
         meta: {}
       },
     ]
