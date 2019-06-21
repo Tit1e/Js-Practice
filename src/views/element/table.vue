@@ -60,7 +60,6 @@ export default {
     this.getList()
   },
   mounted() {
-    this.tableHeight = `${document.body.clientHeight - 100}px`
   },
   methods: {
     getList() {
