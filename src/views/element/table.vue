@@ -5,6 +5,7 @@
         border
         :data="list"
         v-loading="loading"
+        @row-click= "detail"
         style="width: 100%">
         <el-table-column
           type="index">
@@ -20,14 +21,53 @@
           width="180">
         </el-table-column>
         <el-table-column
-          label="照片">
+          label="照片"
+          width="280">
           <template slot-scope="scope">
             <a :href="scope.row.photo">{{ scope.row.photo }}</a>
           </template>
         </el-table-column>
         <el-table-column
           prop="attention_degree"
-          label="学位">
+          label="学位"
+          width="140">
+        </el-table-column>
+        <el-table-column
+          label="状态">
+          <!-- 数组 -->
+          <!-- <template slot-scope="scope">
+            <el-tag  :type="statusFilter(scope.row.status).type" >
+             {{ statusFilter(scope.row.status).name}}
+            </el-tag>
+          </template> -->
+          <!-- 三元 -->
+          <!-- <template slot-scope="scope">
+             <el-tag  :type="scope.row.status == true ? 'success':'danger'" >
+             {{ scope.row.status == true ? '有效':'无效' }}
+            </el-tag>
+          </template> -->
+          <!-- 对象 -->
+          <template slot-scope="scope">
+            <el-tag :type="statusObj[scope.row.status].type">
+              {{ statusObj[scope.row.status].name }}
+            </el-tag>
+          </template>
+        </el-table-column>
+        <el-table-column
+          label="操作">
+          <template slot-scope="scope">
+             <!-- <el-button
+             type="primary"
+              size="mini"
+              plain
+              :disabled="!scope.row.status"
+              @click="deleteList(scope.row)">编 辑</el-button> -->
+            <el-button
+              type="danger"
+              size="mini"
+              :disabled="!scope.row.status"
+              @click="deleteList(scope.row)">删 除</el-button>
+          </template>
         </el-table-column>
       </el-table>
       <el-pagination
@@ -40,6 +80,36 @@
         :total="this.lists.length">
       </el-pagination>
     </card>
+
+    <el-dialog
+      title="详细信息"
+      :visible.sync="dialogVisible"
+      width="40%">
+      <el-form>
+        <el-form-item label="标题：">
+          {{ form.title }}
+        </el-form-item>
+         <el-form-item label="公司：">
+           {{ form.company }}
+        </el-form-item>
+        <el-form-item label="照片：">
+         <img :src="form.photo">
+        </el-form-item>
+        <el-form-item label="学位：">
+          {{ form.attention_degree }}
+        </el-form-item>
+        <el-form-item label="状态：">
+          <el-tag  :type="form.status == true ? 'success':'danger'" >
+             {{ form.status == true ? '有效':'无效' }}
+            </el-tag>
+        </el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+      </span>
+    </el-dialog>
+
   </div>
 </template>
 
@@ -54,6 +124,30 @@ export default {
       loading: false,
       currentPage: 1,
       pageSizes: 10,
+      statusTags: [
+        {
+          name: '有效',
+          label: true,
+          type: 'success'
+        },
+        {
+          name: '无效',
+          label: false,
+          type: 'danger'
+        },
+      ],
+      statusObj: {
+        'true': {
+          type: 'success',
+          name: '有效'
+        },
+        'false': {
+          type: 'warning',
+          name: '无效'
+        }
+      },
+      dialogVisible: false,
+      form: {}
     }
   },
   created(){
@@ -67,6 +161,7 @@ export default {
       axios.get('/api/data')
       .then((res) => {
         if(res.data.code === 200){
+          console.log(res.data)
           this.lists = res.data.data
           this.loading = false
           this.init()
@@ -92,6 +187,22 @@ export default {
       // console.log(`当前页: ${val}`);
       this.currentPage = val
       this.init()
+    },
+    statusFilter(a) {
+     return this.statusTags.filter((el) => {
+        return   el.label ===  a
+      })
+    },
+    deleteList(row) {
+      this.list.map((i,index) => {
+       if (row.id === i.id) {
+         this.list.splice(index,1)
+       }
+      })
+    },
+    detail(row) {
+      this.dialogVisible =  true
+      this.form = row
     }
   }
 }
