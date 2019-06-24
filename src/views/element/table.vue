@@ -5,32 +5,32 @@
         border
         :data="list"
         v-loading="loading"
-        @row-click= "detail"
+        ref="multipleTable"
+        @selection-change="handleSelectionChange"
         style="width: 100%">
+        <el-table-column
+        type="selection">
+        </el-table-column>
         <el-table-column
           type="index">
         </el-table-column>
         <el-table-column
           prop="title"
-          label="标题"
-          width="180">
+          label="标题">
         </el-table-column>
         <el-table-column
           prop="company"
-          label="公司"
-          width="180">
+          label="公司">
         </el-table-column>
         <el-table-column
-          label="照片"
-          width="280">
+          label="照片">
           <template slot-scope="scope">
-            <a :href="scope.row.photo">{{ scope.row.photo }}</a>
+            <img :src="scope.row.photo" height="30px">
           </template>
         </el-table-column>
         <el-table-column
           prop="attention_degree"
-          label="学位"
-          width="140">
+          label="学位">
         </el-table-column>
         <el-table-column
           label="状态">
@@ -54,19 +54,37 @@
           </template>
         </el-table-column>
         <el-table-column
-          label="操作">
+          label="操作"
+          width="240">
           <template slot-scope="scope">
-             <!-- <el-button
-             type="primary"
+            <el-button
+              type="primary"
               size="mini"
               plain
-              :disabled="!scope.row.status"
-              @click="deleteList(scope.row)">编 辑</el-button> -->
+              @click="lookList(scope.row)">查 看</el-button>
             <el-button
-              type="danger"
+              type="success"
               size="mini"
-              :disabled="!scope.row.status"
-              @click="deleteList(scope.row)">删 除</el-button>
+              plain
+              style="margin-right: 10px;"
+              @click="editList(scope.row)">编 辑</el-button>
+            <el-popover
+              ref="popover"
+              placement="top"
+              width="160"
+              v-model="visible">
+              <p>确定要删除吗？</p>
+              <div style="text-align: right; margin: 0">
+                <el-button size="mini" type="text" @click="visible = false">取消</el-button>
+                <el-button type="primary" size="mini" @click="deleteList(scope.row)">确定</el-button>
+              </div>
+              <el-button
+                type="danger"
+                size="mini"
+                slot="reference"
+                :disabled="!scope.row.status"
+                >删 除</el-button>
+            </el-popover>
           </template>
         </el-table-column>
       </el-table>
@@ -82,31 +100,32 @@
     </card>
 
     <el-dialog
-      title="详细信息"
+      :title="title"
+      center
       :visible.sync="dialogVisible"
-      width="40%">
-      <el-form>
+      width="30%">
+      <el-form inline label-width="100px">
         <el-form-item label="标题：">
-          {{ form.title }}
+          <el-input :disabled = "flag" v-model="form.title"></el-input>
         </el-form-item>
          <el-form-item label="公司：">
-           {{ form.company }}
+          <el-input :disabled = "flag" v-model="form.company"></el-input>
         </el-form-item>
-        <el-form-item label="照片：">
+        <el-form-item label="照片：" width="100%">
+         <el-input :disabled = "flag" v-model="form.photo"></el-input>
          <img :src="form.photo">
         </el-form-item>
         <el-form-item label="学位：">
-          {{ form.attention_degree }}
+          <el-input :disabled = "flag" v-model="form.attention_degree"></el-input>
         </el-form-item>
         <el-form-item label="状态：">
-          <el-tag  :type="form.status == true ? 'success':'danger'" >
-             {{ form.status == true ? '有效':'无效' }}
-            </el-tag>
+          <el-radio v-model="form.status" :label="true" :disabled="flag">有 效</el-radio>
+          <el-radio v-model="form.status" :label="false" :disabled="flag">无 效</el-radio>
         </el-form-item>
       </el-form>
-      <span slot="footer" class="dialog-footer">
+      <span slot="footer" class="dialog-footer" v-if="!flag">
         <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+        <el-button type="primary" @click="submit">确 定</el-button>
       </span>
     </el-dialog>
 
@@ -124,6 +143,7 @@ export default {
       loading: false,
       currentPage: 1,
       pageSizes: 10,
+      flag:false,
       statusTags: [
         {
           name: '有效',
@@ -147,7 +167,10 @@ export default {
         }
       },
       dialogVisible: false,
-      form: {}
+      form: {},
+      radio: true,
+      title: '',
+      visible: false,
     }
   },
   created(){
@@ -195,14 +218,34 @@ export default {
     },
     deleteList(row) {
       this.list.map((i,index) => {
+        console.log(i)
        if (row.id === i.id) {
          this.list.splice(index,1)
        }
       })
     },
-    detail(row) {
+    editList(row) {
+      this.flag = false
+      this.title = '编辑信息'
       this.dialogVisible =  true
       this.form = row
+    },
+    submit(){
+      this.list.map((i,index) => {
+      if (this.form.id === i.id) {
+        this.list.splice(index,1,this.form)
+      }
+    })
+    this.dialogVisible = false
+    },
+    lookList(row) {
+      this.flag = true
+      this.title = '详细信息'
+      this.dialogVisible =  true
+      this.form = row
+    },
+    handleSelectionChange(val) {
+
     }
   }
 }
