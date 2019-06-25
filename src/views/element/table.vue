@@ -6,6 +6,7 @@
         :data="list"
         v-loading="loading"
         ref="multipleTable"
+        @row-click="detail"
         @selection-change="handleSelectionChange"
         style="width: 100%">
         <el-table-column
@@ -58,21 +59,16 @@
           width="240">
           <template slot-scope="scope">
             <el-button
-              type="primary"
-              size="mini"
-              plain
-              @click="lookList(scope.row)">查 看</el-button>
-            <el-button
               type="success"
               size="mini"
               plain
               style="margin-right: 10px;"
-              @click="editList(scope.row)">编 辑</el-button>
+              @click.stop="editList(scope.row)">编 辑</el-button>
             <el-popover
               ref="popover"
               placement="top"
               width="160"
-              v-model="visible">
+              v-model="scope.row.visible">
               <p>确定要删除吗？</p>
               <div style="text-align: right; margin: 0">
                 <el-button size="mini" type="text" @click="visible = false">取消</el-button>
@@ -83,6 +79,7 @@
                 size="mini"
                 slot="reference"
                 :disabled="!scope.row.status"
+                @click.stop="() => {}"
                 >删 除</el-button>
             </el-popover>
           </template>
@@ -170,7 +167,6 @@ export default {
       form: {},
       radio: true,
       title: '',
-      visible: false,
     }
   },
   created(){
@@ -184,8 +180,11 @@ export default {
       axios.get('/api/data')
       .then((res) => {
         if(res.data.code === 200){
-          console.log(res.data)
           this.lists = res.data.data
+          this.lists.forEach(element => {
+            element.visible = false
+          });
+          console.log(this.lists)
           this.loading = false
           this.init()
         }
@@ -218,7 +217,6 @@ export default {
     },
     deleteList(row) {
       this.list.map((i,index) => {
-        console.log(i)
        if (row.id === i.id) {
          this.list.splice(index,1)
        }
@@ -228,25 +226,25 @@ export default {
       this.flag = false
       this.title = '编辑信息'
       this.dialogVisible =  true
-      this.form = row
+      let copyRow = {...row}
+      this.form = copyRow
     },
     submit(){
       this.list.map((i,index) => {
-      if (this.form.id === i.id) {
-        this.list.splice(index,1,this.form)
-      }
-    })
+        if (this.form.id === i.id) {
+          this.list.splice(index,1,this.form)
+        }
+      })
     this.dialogVisible = false
     },
-    lookList(row) {
+    detail(row) {
       this.flag = true
       this.title = '详细信息'
       this.dialogVisible =  true
       this.form = row
     },
     handleSelectionChange(val) {
-
-    }
+    },
   }
 }
 // !要求一
