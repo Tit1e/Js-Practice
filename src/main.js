@@ -18,7 +18,7 @@ import mavonEditor from 'mavon-editor'
 
 import card from '@/components/card'
 
-require('./mock')
+import axios from '@/utils/axios'
 
 Vue.use(mavonEditor)
 
@@ -32,7 +32,10 @@ Vue.use(VueCodemirror, {
     readOnly: 'nocursor'
   },
 })
+
 Vue.config.productionTip = false
+
+Vue.prototype.$http = axios
 
 Vue.component('card', card)
 
