@@ -1,14 +1,23 @@
 <template>
-  <el-container>
+  <el-container class="right-content">
     <menu-bar />
     <el-main>
-      <el-page-header :content="$route.name"  @back="goBack"></el-page-header>
-      <transition name="fade-transform"
-        mode="out-in">
-        <keep-alive>
-          <router-view />
-        </keep-alive>
-      </transition>
+      <div class="top-header">
+        <el-page-header  @back="goBack">
+          <div slot="content">
+            {{$route.name}}
+            <el-link type="primary" class="el-icon-s-claim" :underline="false"></el-link>
+          </div>
+        </el-page-header>
+      </div>
+      <div class="content-wrap">
+        <transition name="fade-transform"
+          mode="out-in">
+          <keep-alive>
+            <router-view />
+          </keep-alive>
+        </transition>
+      </div>
     </el-main>
   </el-container>
 </template>
@@ -32,7 +41,17 @@ export default {
 .el-main{
   background-color: #ECF5FF;
 }
-.el-page-header{
-  margin-bottom: 15px;
+.right-content .top-header{
+  position: fixed;
+  padding: 20px;
+  top: 0;
+  left: 200px;
+  right: 0;
+  z-index: 9;
+  background-color: #ECF5FF;
+  box-shadow: 12px 0 10px rgba(0,0,0,.2);
+}
+.right-content .content-wrap{
+  margin-top: 60px;
 }
 </style>

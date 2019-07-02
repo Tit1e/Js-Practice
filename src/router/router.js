@@ -185,6 +185,12 @@ const routes = [
         component: () => import('@/views/description'),
         meta: {}
       },
+      {
+        name: 'API 文档',
+        path: '/apiDocument',
+        component: () => import('@/views/apiDocument'),
+        meta: {}
+      },
     ]
   },
   ...array,
