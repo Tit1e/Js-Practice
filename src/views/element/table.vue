@@ -171,10 +171,22 @@ export default {
   },
   created(){
     this.getList()
+    this.getlist1()
   },
   mounted() {
   },
   methods: {
+    getlist1(){
+       axios.post('http://129.204.79.16:3000/api/user/query',{admin: 1})
+      .then((res) => {
+        if(res.data.code === 200){
+          
+        }
+      })
+      .catch((res) => {
+
+      })
+    },
     getList() {
       this.loading = true
       axios.get('/api/data')
