@@ -35,7 +35,7 @@ Vue.use(VueCodemirror, {
 
 Vue.config.productionTip = false
 
-Vue.prototype.$http = axios
+Vue.prototype.$axios = axios
 
 Vue.component('card', card)
 
