@@ -1,7 +1,7 @@
 <template>
 <div>
   <card>
-    <p>使用对象解构赋值的方式简化下面过程</p>
+    <p></p>
     <codemirror v-model="source" />
   </card>
 
@@ -15,15 +15,17 @@
 export default {
   data() {
     return {
-      source:
-`let obj = { name: 'John', age: 5}
-
-let name = obj.name
-let _age = obj.age
-`,
-      code:
-``
+      source: '',
+      code: '',
     }
   },
+  created(){
+    this.getSubject(this)
+  },
+  methods: {
+    save(){
+      this.saveSubject(this)
+    }
+  }
 }
 </script>

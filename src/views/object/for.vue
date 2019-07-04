@@ -1,7 +1,6 @@
 <template>
 <div>
   <card>
-    <p>循环打印出对象中每个属性的【键名】与【键值】</p>
     <codemirror v-model="source" />
   </card>
 
@@ -15,11 +14,17 @@
 export default {
   data() {
     return {
-      source:
-`let obj = { name: 'John', age: 5, city: 'China'}`,
-      code:
-``
+      source: '',
+      code: '',
     }
   },
+  created(){
+    this.getSubject(this)
+  },
+  methods: {
+    save(){
+      this.saveSubject(this)
+    }
+  }
 }
 </script>

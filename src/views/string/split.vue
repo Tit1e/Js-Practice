@@ -1,7 +1,6 @@
 <template>
 <div>
   <card>
-    <p>根据【.】打断 string，返回一个打断后的数组</p>
     <codemirror v-model="source" />
   </card>
 
@@ -15,11 +14,17 @@
 export default {
   data() {
     return {
-      source:
-`let string = 'www.google.com'`,
-      code:
-``
+      source: '',
+      code: '',
     }
   },
+  created(){
+    this.getSubject(this)
+  },
+  methods: {
+    save(){
+      this.saveSubject(this)
+    }
+  }
 }
 </script>

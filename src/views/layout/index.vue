@@ -6,7 +6,7 @@
         <el-page-header  @back="goBack">
           <div slot="content">
             {{$route.name}}
-            <el-link type="primary" class="el-icon-s-claim" :underline="false"></el-link>
+            <img src="@/assets/save.svg" class="save" @click="save" v-if="$route.meta.showSave">
           </div>
         </el-page-header>
       </div>
@@ -14,7 +14,7 @@
         <transition name="fade-transform"
           mode="out-in">
           <keep-alive>
-            <router-view />
+            <router-view ref="currentPage"/>
           </keep-alive>
         </transition>
       </div>
@@ -27,6 +27,9 @@ import menuBar from './components/menuBar'
 export default {
   components: { menuBar },
   methods: {
+    save(){
+      this.$refs.currentPage.save()
+    },
     goBack(){
       history.go(-1)
     }
@@ -34,24 +37,38 @@ export default {
 }
 </script>
 
-<style scoped>
-.el-container {
+<style scoped lang="scss">
+.right-content{
   height: 100vh;
+  .el-main{
+    background-color: #ECF5FF;
+    .top-header{
+      position: fixed;
+      padding: 20px;
+      top: 0;
+      left: 200px;
+      right: 0;
+      z-index: 9;
+      background-color: #ECF5FF;
+      box-shadow: 12px 0 10px rgba(0,0,0,.2);
+    }
+    .content-wrap{
+      margin-top: 60px;
+    }
+  }
+  .save{
+    height: 21px;
+    float: right;
+    margin-left: 10px;
+    cursor: pointer;
+    &:hover{
+      opacity: 0.8;
+    }
+    &:active{
+      
+      filter:brightness(0.5);
+    }
+  }
 }
-.el-main{
-  background-color: #ECF5FF;
-}
-.right-content .top-header{
-  position: fixed;
-  padding: 20px;
-  top: 0;
-  left: 200px;
-  right: 0;
-  z-index: 9;
-  background-color: #ECF5FF;
-  box-shadow: 12px 0 10px rgba(0,0,0,.2);
-}
-.right-content .content-wrap{
-  margin-top: 60px;
-}
+
 </style>

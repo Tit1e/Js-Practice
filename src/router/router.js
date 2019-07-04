@@ -15,37 +15,37 @@ const array = [
         name: '判断类型',
         path: '/array/instanceof',
         component: () => import('@/views/array/instanceof'),
-        meta: {}
+        meta: { showSave: true }
       },
       {
         name: '数组解构赋值',
         path: '/array/array-destructuring',
         component: () => import('@/views/array/destructuring'),
-        meta: {}
+        meta: { showSave: true }
       },
       {
         name: '数据处理',
         path: '/array/map',
         component: () => import('@/views/array/map'),
-        meta: {}
+        meta: { showSave: true }
       },
       {
         name: '数据过滤',
         path: '/array/filter',
         component: () => import('@/views/array/filter'),
-        meta: {}
+        meta: { showSave: true }
       },
       {
         name: '判断包含',
         path: '/array/includes',
         component: () => import('@/views/array/includes'),
-        meta: {}
+        meta: { showSave: true }
       },
       {
         name: '数组合并',
         path: '/array/concat',
         component: () => import('@/views/array/concat'),
-        meta: {}
+        meta: { showSave: true }
       },
     ]
   }
@@ -61,31 +61,31 @@ const object = [
         name: '对象解构赋值',
         path: '/object/object-destructuring',
         component: () => import('@/views/object/destructuring'),
-        meta: {}
+        meta: { showSave: true }
       },
       {
         name: '对象循环',
         path: '/object/object-for',
         component: () => import('@/views/object/for'),
-        meta: {}
+        meta: { showSave: true }
       },
       {
         name: '获取键名',
         path: '/object/keys',
         component: () => import('@/views/object/keys'),
-        meta: {}
+        meta: { showSave: true }
       },
       {
         name: '浅拷贝',
         path: '/object/assign',
         component: () => import('@/views/object/assign'),
-        meta: {}
+        meta: { showSave: true }
       },
       {
         name: '对象赋值',
         path: '/object/set-object',
         component: () => import('@/views/object/set-object'),
-        meta: {}
+        meta: { showSave: true }
       },
     ]
   }
@@ -101,25 +101,25 @@ const string = [
         name: '字符判断',
         path: '/string/indexof',
         component: () => import('@/views/string/indexof'),
-        meta: {}
+        meta: { showSave: true }
       },
       {
         name: '字符打断',
         path: '/string/split',
         component: () => import('@/views/string/split'),
-        meta: {}
+        meta: { showSave: true }
       },
       {
         name: '模板字符串',
         path: '/string/template-literals',
         component: () => import('@/views/string/templateLiterals'),
-        meta: {}
+        meta: { showSave: true }
       },
       {
         name: '字符串截取',
         path: '/string/substring',
         component: () => import('@/views/string/substring'),
-        meta: {}
+        meta: { showSave: true }
       },
     ]
   }
@@ -135,7 +135,7 @@ const date = [
         name: '日期处理',
         path: '/date/date',
         component: () => import('@/views/date/date'),
-        meta: {}
+        meta: { showSave: true }
       },
     ]
   }
@@ -151,7 +151,7 @@ const vue = [
         name: 'Vue',
         path: '/vue/vue',
         component: () => import('@/views/vue/vue'),
-        meta: {}
+        meta: { showSave: true }
       },
     ]
   }
@@ -167,7 +167,7 @@ const element = [
         name: 'Table',
         path: '/element/table',
         component: () => import('@/views/element/table'),
-        meta: {}
+        meta: { showSave: true }
       },
     ]
   }
@@ -183,13 +183,13 @@ const routes = [
         name: '项目说明',
         path: '/description',
         component: () => import('@/views/description'),
-        meta: {}
+        meta: { showSave: false }
       },
       {
         name: 'API 文档',
         path: '/apiDocument',
         component: () => import('@/views/apiDocument'),
-        meta: {}
+        meta: { showSave: false }
       },
     ]
   },
