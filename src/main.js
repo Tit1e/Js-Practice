@@ -20,6 +20,10 @@ import card from '@/components/card'
 
 import axios from '@/utils/axios'
 
+import Notify from '@/utils/notify.js'
+
+import { getSubject, saveSubject } from '@/utils/methods.js'
+
 Vue.use(mavonEditor)
 
 Vue.use(VueCodemirror, {
@@ -29,13 +33,16 @@ Vue.use(VueCodemirror, {
     tabSize: 2,
     mode: 'text/javascript',
     line: false,
-    readOnly: 'nocursor'
+    // readOnly: 'nocursor' //只读
   },
 })
 
 Vue.config.productionTip = false
 
-Vue.prototype.$http = axios
+Vue.prototype.$axios = axios
+Vue.prototype.$Notify = Notify
+Vue.prototype.getSubject = getSubject
+Vue.prototype.saveSubject = saveSubject
 
 Vue.component('card', card)
 

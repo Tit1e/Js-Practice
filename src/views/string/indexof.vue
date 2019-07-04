@@ -1,7 +1,6 @@
 <template>
 <div>
   <card>
-    <p>判断 str 是否在 string 中，如果在，在什么位置</p>
     <codemirror v-model="source" />
   </card>
 
@@ -15,9 +14,7 @@
 export default {
   data() {
     return {
-      source:
-`let string = 'www.google.com'
-let str = 'g'`,
+      source: '',
       code:
 `for(var i = 0; i < string.length; i++){
   if(string[i] !== -1) {
@@ -31,5 +28,13 @@ console.log(two)  // 7
 `
     }
   },
+  created(){
+    this.getSubject(this)
+  },
+  methods: {
+    save(){
+      this.saveSubject(this)
+    }
+  }
 }
 </script>
