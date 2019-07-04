@@ -1,7 +1,6 @@
 <template>
 <div>
   <card>
-    <p>数组的结构赋值，使用简化或还原下面过程</p>
     <codemirror v-model="source" />
   </card>
 
@@ -20,14 +19,7 @@
 export default {
   data() {
     return {
-      source:
-`// 简化下面的赋值过程
-let a = 1
-let b = 2
-let c = 3
-
-// 将下面数组拆分成两个组：a = [1]，b = [2, 3, 4]
-const array = [1, 2, 3, 4]`,
+      source: '',
       code:
 `let [a, b, c] = [1, 2, 3]
 let [a, ...b] = [1,2,3,4]`,
@@ -35,5 +27,13 @@ let [a, ...b] = [1,2,3,4]`,
 ``
     }
   },
+  created(){
+    this.getSubject(this)
+  },
+  methods: {
+    save(){
+      this.saveSubject(this)
+    }
+  }
 }
 </script>

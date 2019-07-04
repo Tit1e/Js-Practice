@@ -4,7 +4,7 @@
     <p>
       <el-link type="primary" target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign">Object.assign()</el-link> 方法的使用
     </p>
-    <p>浅拷贝一个对象（多种方法）</p>
+    <p></p>
     <codemirror v-model="source" />
   </card>
 
@@ -18,8 +18,7 @@
 export default {
   data() {
     return {
-      source:
-`let obj = { name: 'John', age: 5, city: 'China'}`,
+      source: '',
       code:
 `// 方法1
 const obj1 = Object.assign(obj)
@@ -37,5 +36,13 @@ let copyObj = {...obj}
 console.log(copyObj) //{name: "John", age: 5, city: "China"}`
     }
   },
+  created(){
+    this.getSubject(this)
+  },
+  methods: {
+    save(){
+      this.saveSubject(this)
+    }
+  }
 }
 </script>

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { Notification } from 'element-ui'
+import Notify from '@/utils/notify.js'
 
 const service = axios.create({
   baseURL: process.env.NODE_ENV === 'development' ? "http://129.204.79.16:3000" : "http://129.204.79.16:3000", // api 的 base_url
@@ -11,7 +11,7 @@ const service = axios.create({
 service.interceptors.response.use(
   response => {
     if (response.data.code !== 200) {
-      Notification.error(response.data.msg)
+      Notify.error(response.data.msg)
       return Promise.reject(response.data.msg)
     }
     return Promise.resolve(response.data)

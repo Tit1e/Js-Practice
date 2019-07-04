@@ -1,7 +1,6 @@
 <template>
 <div>
   <card>
-    <p>判断变量数据类型是否为数组</p>
     <codemirror v-model="source" />
   </card>
   <card title="回答内容">
@@ -26,9 +25,7 @@
 export default {
   data() {
     return {
-      source:
-`// 判断 array 是否为数组
-const array = [1, 2, 3]`,
+      source: '',
       code:
 `// !这是代码编辑器，就别用 markdown 语法了
 
@@ -59,5 +56,13 @@ console.log(array instanceof Array)                //true
     + jquery.type()`
     }
   },
+  created(){
+    this.getSubject(this)
+  },
+  methods: {
+    save(){
+      this.saveSubject(this)
+    }
+  }
 }
 </script>
