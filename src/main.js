@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router/router'
 import store from './store/store'
 import './plugins/element.js'
+import dayjs from 'dayjs'
 
 import '@/assets/index.scss'
 import '@/assets/transition.scss'
@@ -43,6 +44,7 @@ Vue.prototype.$axios = axios
 Vue.prototype.$Notify = Notify
 Vue.prototype.getSubject = getSubject
 Vue.prototype.saveSubject = saveSubject
+Vue.prototype.$dayjs = dayjs
 
 Vue.component('card', card)
 
