@@ -1,6 +1,5 @@
 <template>
   <card title="目录">
-    <h1>辅导小学生写作业 - -</h1>
     <div v-for="menu in menuList" :key="menu.path" class="ul-wrap">
       {{menu.name}}
       <ul>
