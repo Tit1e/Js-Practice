@@ -30,6 +30,67 @@
 }
 ```
 ## **接口列表**
+### **全局公共接口**
+#### **获取广告类别**
+* url：/api/common/ad_class
+* type: get
+* 请求参数：无
+* 成功返回示例
+  ```js
+  {
+    code: 200,
+    data: [],
+    msg: '获取成功'
+  }
+  ```
+#### **获取商业类别**
+* url：/api/common/bessniss_class
+* type: get
+* 请求参数：无
+* 成功返回示例
+  ```js
+  {
+    code: 200,
+    data: [],
+    msg: '获取成功'
+  }
+  ```
+#### **获取违法类别**
+* url：/api/common/illegal_type
+* type: get
+* 请求参数：无
+* 成功返回示例
+  ```js
+  {
+    code: 200,
+    data: [],
+    msg: '获取成功'
+  }
+  ```
+#### **获取违法表现及违法表现代码**
+* url：/api/common/illegal_expression
+* type: get
+* 请求参数：无
+* 成功返回示例
+  ```js
+  {
+    code: 200,
+    data: [],
+    msg: '获取成功'
+  }
+  ```
+#### **获取全国行政区划**
+* url：/api/common/region
+* type: get
+* 请求参数：无
+* 成功返回示例
+  ```js
+  {
+    code: 200,
+    data: [],
+    msg: '获取成功'
+  }
+  ```
 ### **人员管理**
 #### **获取人员列表**
 * url：/api/user/query
