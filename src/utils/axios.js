@@ -2,7 +2,7 @@ import axios from 'axios'
 import Notify from '@/utils/notify.js'
 
 const service = axios.create({
-  baseURL: process.env.NODE_ENV === 'development' ? "http://localhost:3000" : "http://129.204.79.16:3000", // api 的 base_url
+  baseURL: process.env.NODE_ENV === 'development' ? "http://129.204.79.16:3000" : "http://129.204.79.16:3000", // api 的 base_url
   timeout: 5000 // 请求超时时间
 })
 
