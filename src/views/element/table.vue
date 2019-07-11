@@ -7,10 +7,41 @@
   </card>
   <card title="回答内容">
     <div class="tableHeader">
-      <h3>列 表</h3>
-      <el-button type="primary" @click="addList()">添 加</el-button>
+      <el-form inline>
+        <el-form-item label="用户名称：">
+          <el-input v-model="searchForm.name"  placeholder="请输入用户名称" clearable></el-input>
+        </el-form-item>
+        <el-form-item label="创建时间：">
+          <el-date-picker
+            v-model="timeValue"
+            type="daterange"
+            clearable
+            value-format="yyyy-MM-dd"
+            placeholder="选择日期"
+            range-separator="至"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期">
+          </el-date-picker>
+        </el-form-item>
+        <el-form-item label="是否为管理员：">
+          <el-radio-group v-model="searchForm.admin">
+            <el-radio :label="-1">全部</el-radio>
+            <el-radio :label="1">是</el-radio>
+            <el-radio :label="0">否</el-radio>
+          </el-radio-group>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" plain @click="getList" style="margin: 0px 20px;">搜 索</el-button>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="addList()">添 加</el-button>
+        </el-form-item>
+      </el-form>
     </div>
     <el-table
+      v-loading="loading"
+      element-loading-text="拼命加载中"
+      element-loading-spinner="el-icon-loading"
       :data="tableData"
       border
       stripe
@@ -40,8 +71,9 @@
           <el-popover
             placement="top"
             width="160"
+            title="提示"
             v-model="scope.row.visible">
-            <p>这是一段内容这是一段内容确定删除吗？</p>
+            <p>确定要删除操作吗？</p>
             <div style="text-align: right; margin: 0">
               <el-button size="mini" type="text" @click="scope.row.visible = false">取消</el-button>
               <el-button type="primary" size="mini" @click="deleteList(scope.row)">确定</el-button>
@@ -62,20 +94,21 @@
       layout="total, sizes, prev, pager, next, jumper"
       :total="total">
     </el-pagination>
-    <!-- 对话框 -->
+    <!-- 添加编辑对话框 -->
     <el-dialog
       :title="title"
       :visible.sync="dialogVisible"
+      @close="closeVisible"
       width="30%">
-      <el-form :model="form" label-width="100px">
-        <el-form-item label="用户名">
+      <el-form :model="form" label-width="100px" ref="form" :rules="rules" >
+        <el-form-item label="用户名" prop="name">
           <el-input v-model="form.name" clearable></el-input>
         </el-form-item>
-        <el-form-item label="密码">
-          <el-input v-model="form.password" clearable show-password></el-input>
+        <el-form-item label="密码" prop="password">
+          <el-input type="password" v-model="form.password" clearable></el-input>
         </el-form-item>
-        <el-form-item label="验证密码">
-          <el-input v-model="form.checkPassword" clearable show-password></el-input>
+        <el-form-item label="验证密码" prop="checkPassword">
+          <el-input type="password" v-model="form.checkPassword" clearable></el-input>
         </el-form-item>
         <el-form-item label="是否为管理员">
           <el-radio-group v-model="form.admin">
@@ -93,7 +126,7 @@
     <el-dialog title="详细信息" :visible.sync="dialogFormVisible" width="30%" center>
       <el-form :model="detailForm">
         <el-form-item label="用户名：" :label-width="formLabelWidth">
-          <el-input v-model="detailForm.name" disabled></el-input>
+          {{ detailForm.name }}
         </el-form-item>
         <el-form-item label="权限：" :label-width="formLabelWidth">
           <el-radio disabled v-model="detailForm.admin" :label="1">是</el-radio>
@@ -103,7 +136,7 @@
           <el-tag :type="detailForm.status == 1? 'success' : 'info'">{{detailForm.status == 1? '有效' : '无效'}}</el-tag>
         </el-form-item>
         <el-form-item label="创建日期：" :label-width="formLabelWidth">
-          <el-input v-model="detailForm.time" disabled></el-input>
+          {{ detailForm.time }}
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -117,8 +150,52 @@
 <script>
 export default {
   data() {
+    var validateName = (rule, value, callback) => {
+      value = value || ''
+      if (value === '') {
+        callback(new Error('请输入用户名'));
+      } else {
+        var nameReg = /[~!@#$%^&*()/\|,.<>?"'();:_+-=\[\]{}]/;
+        if (nameReg.test(this.form.name)) {
+         callback(new Error('请输入除了数字和特殊字符的用户名'));
+        }
+        callback();
+      }
+    };
+    var validatePass = (rule, value, callback) => {
+      value = value || ''
+      if (value === '') {
+        callback(new Error('请输入密码'));
+      } else if (value.length < 6){
+         callback(new Error('密码长度不能小于6位'));
+      } else {
+        if (this.form.checkPassword !== '') {
+          this.$refs.form.validateField('checkPassword');
+        }
+        callback();
+      }
+    };
+    var validatePass2 = (rule, value, callback) => {
+     value = value || ''
+      if (value === '') {
+        callback(new Error('请再次输入密码'));
+      } else if (value !== this.form.password) {
+        callback(new Error('两次输入密码不一致!'));
+      }  else if (value.length < 6){
+         callback(new Error('密码长度不能小于6位'));
+      } else {
+        callback();
+      }
+    };
     return {
+      loading: false,
       tableData:[],
+      timeValue: [],
+      searchForm: {
+        create_time: '',
+        name: '',
+        admin: -1,
+      },
       form: {
         name: '',
         password: '',
@@ -147,6 +224,19 @@ export default {
      },
      formLabelWidth: '100px',
      dialogFormVisible: false,
+     radio: '1',
+     value: '',
+     rules: {
+       name: [
+          { validator: validateName, required: true, trigger: 'blur' },
+        ],
+        password: [
+          { validator: validatePass, required: true, trigger: 'blur' }
+        ],
+        checkPassword: [
+          { validator: validatePass2, required: true, trigger: 'blur' }
+        ],
+      }
     }
   },
   created(){
@@ -154,11 +244,15 @@ export default {
   },
   methods: {
     getList() {
+      this.loading = true
       const data = {
+        ...this.searchForm,
         ...this.page,
       }
+      data.create_time = this.timeValue.join(',')
       this.$axios.post('/api/user/query',data)
       .then((res) => {
+        this.loading = false
         this.tableData = res.data.list
         this.total = res.data.total
       })
@@ -171,45 +265,56 @@ export default {
       this.title = '添加人员'
     },
     editList(row) {
-      this.form = row
+      this.form = {...row}
       this.dialogVisible = true
       this.title = '编辑人员'
     },
     submit() {
       if(this.title == '添加人员'){
         const data = this.form
-        this.$axios.post('/api/user/add',data)
-        .then((res) => {
-          if(res.code == 200){
-            this.$message.success(res.msg)
-            this.dialogVisible = false
-            this.form = {}
-            this.getList()
+        this.$refs.form.validate((valid) => {
+          if (valid) {
+            this.$axios.post('/api/user/add',data)
+            .then((res) => {
+              if(res.code == 200){
+                this.$message.success(res.msg)
+                this.dialogVisible = false
+                this.form = {}
+                this.getList()
+              }
+            })
+            .catch((res) => {
+            })
+          } else {
+            return false;
           }
-        })
-        .catch((res) => {
-        })
+        });
       } else {
-        const data = this.form
-        this.$axios.post('/api/user/update',data)
-        .then((res) => {
-          this.$message.success(res.msg)
-          this.dialogVisible = false
-          this.form = {}
-          this.getList()
-        })
-        .catch((res) => {
-        })
+        this.$refs.form.validate((valid) => {
+          if (valid) {
+            let data = this.form
+            this.$axios.post('/api/user/update',data)
+            .then((res) => {
+              this.$message.success(res.msg)
+              this.dialogVisible = false
+              this.form = {}
+              this.getList()
+            })
+            .catch((res) => {
+            })
+          } else {
+            return false;
+          }
+        });
       }
     },
-    deleteList(row,column,event) {
+    closeVisible(){
+      this.form = {}
+       this.$refs.form.resetFields();
+    },
+    deleteList(row) {
       row.visible = false
-      // const data = {
-      //   id: row.id
-      // }
-      this.$axios.get(`/api/user/delete?id=${row.id}`)
-      // this.$axios.get('/api/user/delete?id=' + row.id)
-      // this.$axios.get('/api/user/delete',{params:{id: row.id}})
+      this.$axios.get('/api/user/delete',{params:{id: row.id}})
       .then((res) => {
         if(res.code == 200){
           this.$message.success(res.msg)
@@ -217,7 +322,6 @@ export default {
         }
       })
       .catch((res) => {
-
       })
     },
     detail(row) {
@@ -226,12 +330,10 @@ export default {
       this.detailForm.time = this.$dayjs(row.create_time * 1000).format('YYYY-MM-DD HH:mm:ss')
     },
     handleSizeChange(val) {
-      // console.log(`每页 ${val} 条`);
       this.page.page_size = val
       this.getList()
     },
     handleCurrentChange(val) {
-      // console.log(`当前页: ${val}`);
       this.page.page = val
       this.getList()
     }
@@ -246,14 +348,5 @@ export default {
 .cyan{
   color: 	#00CED1;
 }
-.tableHeader{
-  padding: 0px 10px 10px 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  h3{
-    margin: 0;
-    padding: 0;
-  }
-}
+
 </style>
