@@ -167,7 +167,7 @@ const element = [
         name: 'Table',
         path: '/element/table',
         component: () => import('@/views/element/table'),
-        meta: { showSave: true }
+        meta: { showSave: false }
       },
     ]
   }
