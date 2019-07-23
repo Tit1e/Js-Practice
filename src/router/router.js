@@ -169,6 +169,18 @@ const element = [
         component: () => import('@/views/element/table'),
         meta: { showSave: false }
       },
+      {
+        name: 'Search',
+        path: '/element/search',
+        component: () => import('@/views/element/search'),
+        meta: { showSave: true }
+      },
+      {
+        name: 'Tree',
+        path: '/element/tree',
+        component: () => import('@/views/element/tree'),
+        meta: { showSave: true }
+      },
     ]
   }
 ]
