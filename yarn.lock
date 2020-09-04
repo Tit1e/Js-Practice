@@ -3281,11 +3281,7 @@ highlight.js-async-webpack@^1.0.4:
   version "1.0.4"
   resolved "https://registry.npm.taobao.org/highlight.js-async-webpack/download/highlight.js-async-webpack-1.0.4.tgz#c06b67bf99f049045d62b756e5855b0912ec616c"
 
-highlight.js@^9.11.0, highlight.js@^9.4.0, highlight.js@^9.6.0:
-  version "9.15.8"
-  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.15.8.tgz#f344fda123f36f1a65490e932cf90569e4999971"
-
-highlight.js@^9.15.8:
+highlight.js@^9.11.0, highlight.js@^9.15.8, highlight.js@^9.4.0, highlight.js@^9.6.0:
   version "9.15.8"
   resolved "https://registry.npm.taobao.org/highlight.js/download/highlight.js-9.15.8.tgz#f344fda123f36f1a65490e932cf90569e4999971"
 
@@ -4046,8 +4042,8 @@ locate-path@^3.0.0:
     path-exists "^3.0.0"
 
 lodash.defaultsdeep@^4.6.0:
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/lodash.defaultsdeep/-/lodash.defaultsdeep-4.6.0.tgz#bec1024f85b1bd96cbea405b23c14ad6443a6f81"
+  version "4.6.1"
+  resolved "https://registry.yarnpkg.com/lodash.defaultsdeep/-/lodash.defaultsdeep-4.6.1.tgz#512e9bd721d272d94e3d3a63653fa17516741ca6"
 
 lodash.kebabcase@^4.1.1:
   version "4.1.1"
