@@ -1864,6 +1864,10 @@ commander@^2.18.0, commander@^2.19.0:
   version "2.20.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.0.tgz#d58bb2b5c1ee8f87b0d340027e9e94e222c5a422"
 
+commander@^2.20.3:
+  version "2.20.3"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
+
 commander@~2.19.0:
   version "2.19.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.19.0.tgz#f6198aa84e5b83c46054b94ddedbfed5ee9ff12a"
@@ -2169,6 +2173,10 @@ cssesc@^0.1.0:
 cssesc@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/cssesc/-/cssesc-2.0.0.tgz#3b13bd1bb1cb36e1bcb5a4dcd27f54c5dcb35703"
+
+cssfilter@0.0.10:
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/cssfilter/-/cssfilter-0.0.10.tgz#c6d2672632a2e5c83e013e6864a42ce8defd20ae"
 
 cssnano-preset-default@^4.0.0, cssnano-preset-default@^4.0.7:
   version "4.0.7"
@@ -3281,11 +3289,7 @@ highlight.js-async-webpack@^1.0.4:
   version "1.0.4"
   resolved "https://registry.npm.taobao.org/highlight.js-async-webpack/download/highlight.js-async-webpack-1.0.4.tgz#c06b67bf99f049045d62b756e5855b0912ec616c"
 
-highlight.js@^9.11.0, highlight.js@^9.4.0, highlight.js@^9.6.0:
-  version "9.15.8"
-  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.15.8.tgz#f344fda123f36f1a65490e932cf90569e4999971"
-
-highlight.js@^9.15.8:
+highlight.js@^9.11.0, highlight.js@^9.15.8, highlight.js@^9.4.0, highlight.js@^9.6.0:
   version "9.15.8"
   resolved "https://registry.npm.taobao.org/highlight.js/download/highlight.js-9.15.8.tgz#f344fda123f36f1a65490e932cf90569e4999971"
 
@@ -4160,12 +4164,13 @@ markdown-it@^8.4.0:
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
 
-mavon-editor@^2.7.4:
-  version "2.7.4"
-  resolved "https://registry.npm.taobao.org/mavon-editor/download/mavon-editor-2.7.4.tgz#f5877fa93e73cea22472e2b130b88ed39a828c52"
+mavon-editor@^2.8.2:
+  version "2.8.2"
+  resolved "https://registry.yarnpkg.com/mavon-editor/-/mavon-editor-2.8.2.tgz#442770afba4edd3200d7c3c5ad08114b0c0cf4b5"
   dependencies:
     highlight.js "^9.11.0"
     highlight.js-async-webpack "^1.0.4"
+    xss "^1.0.6"
 
 md5.js@^1.3.4:
   version "1.3.5"
@@ -7074,6 +7079,13 @@ ws@^6.0.0:
 "xml-name-validator@>= 2.0.1 < 3.0.0":
   version "2.0.1"
   resolved "https://registry.npm.taobao.org/xml-name-validator/download/xml-name-validator-2.0.1.tgz#4d8b8f1eccd3419aa362061becef515e1e559635"
+
+xss@^1.0.6:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/xss/-/xss-1.0.10.tgz#5cd63a9b147a755a14cb0455c7db8866120eb4d2"
+  dependencies:
+    commander "^2.20.3"
+    cssfilter "0.0.10"
 
 xtend@^4.0.0, xtend@~4.0.1:
   version "4.0.1"
