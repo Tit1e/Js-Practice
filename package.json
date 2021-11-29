@@ -13,7 +13,7 @@
     "element-ui": "^2.4.5",
     "github-markdown-css": "^3.0.1",
     "highlight.js": "^9.15.8",
-    "mavon-editor": "^2.7.4",
+    "mavon-editor": "^2.8.2",
     "vue": "^2.6.10",
     "vue-codemirror": "^4.0.6",
     "vue-loader": "^15.7.0",
